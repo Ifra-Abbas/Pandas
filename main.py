@@ -47,3 +47,49 @@ dataframe["job"]=["Singer","Singer","Singer","Singer","Singer","Rapper","Rapper"
 # adding a new row to the DataFrame
 new_row=pd.DataFrame({"Name":["Ifra"],"Age":[24],"City":["Gwangju"],"job":["Engineer"]},index=["BTS Member 8"])
 dataframe=pd.concat([dataframe,new_row])
+
+
+# 16-11-2026 Monday
+# Importing (CSV+JSON)
+
+# #CSV: Comma Separated Values
+df=pd.read_csv("pokemon.csv")
+print(df.to_string()) # to_string() is used to print the entire DataFrame without truncation
+
+# JSON: JavaScript Object Notation
+df=pd.read_json("data.json")
+print(df)
+
+# Selection
+
+df=pd.read_csv("pokemon.csv")
+
+# Selecting by column
+print(df["Name"])
+print(df["Type 1"].to_string()) 
+print(df["Type 1"])
+print(df[["Name","Type 1","Type 2"]])# passes the list of columns
+
+# Selection by row
+print(df.loc[0])
+df=pd.read_csv("pokemon.csv",index_col="Name")
+print(df)
+
+print(df.loc["Pikachu"])
+print(df.loc["Pikachu",["Attack","Defense"]])
+print(df.loc["Pikachu":"Nidoran♀"])
+
+print(df.iloc[0:22])
+print(df.iloc[0:22:4])
+print(df.iloc[0:22:4 , 0:3]) # first 3 columns
+print(df.iloc[20:80:2,4:6])
+
+Pokemon=input("Enter any name of the pokemon:")
+
+try:
+    print(df.loc[Pokemon])
+
+except KeyError:
+    print("Pokemon Not Found")
+      
+
